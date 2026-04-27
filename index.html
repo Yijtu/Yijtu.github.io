@@ -32,7 +32,7 @@
       margin-top: 5px;
     }
     .project-tech-stack {
-      font-size: 0.7rem;
+      font-size: 0.85rem;
       color: #12d640;
       margin-top: 5px;
       text-align: center;
@@ -41,11 +41,37 @@
       display: inline-block;
       background: #12d64020;
       color: #12d640;
-      padding: 2px 10px;
+      padding: 3px 12px;
       border-radius: 20px;
-      font-size: 0.7rem;
-      margin: 2px;
+      font-size: 0.85rem;
+      margin: 3px;
     }
+
+    /* 润色版：项目详情区 */
+    .project-detail {
+      background: #0d1117;
+      border: 1px solid #ffffff10;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 0 10px 10px;
+      font-size: 0.95rem;
+      color: #b0b0c0;
+      line-height: 1.7;
+    }
+    .project-detail .arch-line {
+      font-family: 'Courier New', monospace;
+      font-size: 0.88rem;
+      color: #8b949e;
+      margin: 10px 0;
+      padding: 12px;
+      background: #161b22;
+      border-radius: 8px;
+      border-left: 3px solid #12d640;
+    }
+    .project-detail .arch-line strong { color: #12d640; }
+    .project-detail ul { padding-left: 16px; margin: 8px 0 0; }
+    .project-detail ul li { color: #c0c0d0; padding: 2px 0; }
+    .project-detail ul li strong { color: #12d640; }
   </style>
 </head>
 
@@ -237,7 +263,7 @@
   </section>
   <!-- End Skills Section -->
 
-  <!-- Start Core Project Section -->
+  <!-- Start Core Project Section (重点突出) -->
   <section id="portfolio" class="portfolio">
     <div class="container">
       <div class="section-title">
@@ -249,52 +275,81 @@
         <!-- Ragclaw 项目 -->
         <div class="col-lg-6 col-md-6 portfolio-item filter-project">
           <div class="portfolio-wrap" style="background: #1a1a2e; border-radius: 10px; overflow: hidden;">
-            <img src="assets/img/project/ragclaw.jpg" class="img-fluid" alt="Ragclaw" style="width:100%; height:200px; object-fit:cover;">
+            <img src="assets/img/project/ragclaw.jpg" class="img-fluid" alt="多智能体客服系统" style="width:100%; height:200px; object-fit:cover;">
             <div class="portfolio-info" style="background: rgba(0,0,0,0.8);">
-              <h4>Ragclaw - 可解释的Agent工作台</h4>
-              <p>Python / FastAPI / LangChain / Next.js</p>
+              <h4>多智能体智能客服系统</h4>
+              <p>Python / LangChain 1.0 / LangGraph / Streamlit</p>
               <div class="portfolio-links">
-                <a href="https://github.com/Yijtu/ragclaw" target="_blank" title="GitHub"><i class="bx bxl-github"></i></a>
+                <a href="https://github.com/Yijtu" target="_blank" title="GitHub"><i class="bx bxl-github"></i></a>
               </div>
             </div>
           </div>
           <div class="project-tech-stack">
-            <span class="skill-badge">向量检索</span>
-            <span class="skill-badge">BM25</span>
-            <span class="skill-badge">RRF融合</span>
-            <span class="skill-badge">长期记忆</span>
+            <span class="skill-badge">LangGraph</span>
+            <span class="skill-badge">RAG</span>
+            <span class="skill-badge">Checkpointer</span>
+            <span class="skill-badge">中间件</span>
           </div>
-          <p style="color:#ccc; font-size:0.85rem; padding:10px;">
-            <strong>亮点：</strong>Skill优先 + 混合检索兜底的知识检索链路，前端三栏工作台支持检索证据、工具调用、Raw Messages可视化。
+          <p style="color:#ccc; font-size:1rem; padding:10px;">
+            <strong>亮点：</strong>LangGraph 编排 6 个专职 Agent，Checkpointer 实现跨轮次用户画像累积，Chroma 向量库 RAG 知识增强，四层中间件架构，质量检查 + Agent Hand-off 协作。
           </p>
+          <div class="project-detail">
+            <div class="arch-line">
+              <strong>意图分类</strong> &rarr; <strong>画像提取</strong> &rarr; [条件路由]<br>
+              &nbsp;&nbsp;&boxur; <strong>技术支持</strong> (RAG + 工具)&nbsp;&nbsp;
+              &boxur; <strong>订单服务</strong> (数据库查询)&nbsp;&nbsp;
+              &boxur; <strong>产品咨询</strong> (推荐 + 检索)<br>
+              &rarr; <strong>质量检查</strong> &rarr; 通过 / 升级 / Hand-off
+            </div>
+            <ul>
+              <li>9 节点有向图，<strong>条件路由</strong>实现 4 类意图动态分发</li>
+              <li><strong>用户画像累积</strong>：标量覆盖 + 列表去重追加，跨轮次 Checkpointer 持久化</li>
+              <li>Chroma + MiniLM 嵌入，<strong>RAG 知识增强</strong>支持按类别过滤</li>
+              <li>四层<strong>中间件</strong>（日志/计时/限流/异常）+ LLM 四维<strong>质量检查</strong></li>
+            </ul>
+          </div>
         </div>
 
         <!-- learn-claude-code 项目 -->
         <div class="col-lg-6 col-md-6 portfolio-item filter-project">
           <div class="portfolio-wrap" style="background: #1a1a2e; border-radius: 10px; overflow: hidden;">
-            <img src="assets/img/project/claude-code.jpg" class="img-fluid" alt="learn-claude-code" style="width:100%; height:200px; object-fit:cover;">
+            <img src="assets/img/project/claude-code.jpg" class="img-fluid" alt="Agent评估平台" style="width:100%; height:200px; object-fit:cover;">
             <div class="portfolio-info" style="background: rgba(0,0,0,0.8);">
-              <h4>learn-claude-code</h4>
-              <p>Python / LangChain / Harness Engineering</p>
+              <h4>Agent 自动评估平台</h4>
+              <p>Python / FastAPI / Next.js / TypeScript</p>
               <div class="portfolio-links">
-                <a href="https://github.com/Yijtu/learn-claude-code" target="_blank" title="GitHub"><i class="bx bxl-github"></i></a>
+                <a href="https://github.com/Yijtu" target="_blank" title="GitHub"><i class="bx bxl-github"></i></a>
               </div>
             </div>
           </div>
           <div class="project-tech-stack">
-            <span class="skill-badge">Agent Loop</span>
-            <span class="skill-badge">Subagent</span>
-            <span class="skill-badge">上下文压缩</span>
-            <span class="skill-badge">SKILL.md</span>
+            <span class="skill-badge">LLM-as-Judge</span>
+            <span class="skill-badge">FastAPI</span>
+            <span class="skill-badge">Next.js</span>
+            <span class="skill-badge">Pydantic</span>
           </div>
-          <p style="color:#ccc; font-size:0.85rem; padding:10px;">
-            <strong>亮点：</strong>系统拆解Claude Code的Harness工程，实现Subagent隔离对话上下文，覆盖12个递进课程。
+          <p style="color:#ccc; font-size:1rem; padding:10px;">
+            <strong>亮点：</strong>LLM-as-Judge 范式自动评估 Agent 回答质量，CSV 测试集上传 + 批量评估流水线，前端分级着色可视化报告，异常容错确保健壮性。
           </p>
+          <div class="project-detail">
+            <div class="arch-line">
+              用户上传 CSV &rarr; <strong>FastAPI</strong> 解析验证<br>
+              &rarr; <strong>Agent</strong> 逐条回答 &rarr; <strong>LLM Judge</strong> 5级评分+理由<br>
+              &rarr; <strong>Next.js</strong> 可视化报告 (分级着色)
+            </div>
+            <ul>
+              <li><strong>LLM-as-Judge</strong>：专业评估 Prompt + 5 级评分 + JSON 解析 + 重试</li>
+              <li>FastAPI 完整流水线：CSV &rarr; Agent 调用 &rarr; Judge 打分 &rarr; JSON 持久化</li>
+              <li>Next.js + <strong>TypeScript</strong> 类型安全，按分数着色（红/黄/绿）</li>
+              <li>单项失败不阻断，<strong>异常容错</strong> + Pydantic 数据模型验证</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </section>
   <!-- End Core Project Section -->
+
 
   <!-- Start Self Evaluation Section -->
   <section id="self-evaluation" class="services" style="padding: 60px 0;">
